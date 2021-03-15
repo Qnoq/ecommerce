@@ -71,9 +71,13 @@ class CartController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $rowId)
     {
         //
+        $row = Cart::get($rowId);
+
+        Cart::update($rowId, $row->qty - 1);
+        return back()->with('success', 'Item has been removed from cart');
     }
 
     /**

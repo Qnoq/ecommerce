@@ -35,7 +35,7 @@
                                 <td>
                                     <div class="media">
                                         <div class="d-flex">
-                                            <img src="{{ Voyager::image($product->model->image) }}" alt="">
+                                            <img src="{{ Voyager::image($product->model->image) }}" alt="" class="w-50">
                                         </div>
                                         <div class="media-body">
                                             <h4>{{ $product->model->name }}</h4>
@@ -47,10 +47,29 @@
                                     <h5>{{ $product->model->price }}</h5>
                                 </td>
                                 <td>
+                                    <form action="{{ route('cart.store') }}" method="POST">
+                                        {{ csrf_field() }}
+                                        <input type="hidden" name="id" value="{{ $product->id }}">
+                                        <input type="hidden" name="name" value="{{ $product->name }}">
+                                        <input type="hidden" name="price" value="{{ $product->price }}">
+                                        <button type="submit" class="btn mb-3">
+                                            <i class="fas fa-plus"></i>
+                                        </button>
+                                    </form>
                                     <div class="product_count">
-                                        <input disabled type="text" name="qty" id="sst" maxlength="12" value="x {{ $product->qty }}" title="Quantity:"
-                                            class="input-text qty">
+                                        <input disabled type="number" name="qty" id="sst" maxlength="12" value="{{ $product->qty }}" title="Quantity:"
+                                        class="input-text qty">
                                     </div>
+                                    <form action="{{ route('cart.update', $product->rowId) }}" method="POST">
+                                        {{ csrf_field() }}
+                                        {{ method_field('PATCH') }}
+                                        <input type="hidden" name="id" value="{{ $product->id }}">
+                                        <input type="hidden" name="name" value="{{ $product->name }}">
+                                        <input type="hidden" name="price" value="{{ $product->price }}">
+                                        <button type="submit" class="btn mt-3">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+                                    </form>
                                 </td>
                                 <td>
                                     <form action="{{ route('cart.destroy', $product->rowId) }}" method="POST">
@@ -143,7 +162,7 @@
                         @endforeach
                     </div>
                 @else
-                    <h3 class="text-center">No item saved for later</h3>
+                    <h3 class="text-center mt-3">No item saved for later</h3>
                 @endif
             </div>
         </div>
