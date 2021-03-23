@@ -15,8 +15,8 @@
                 <div class="contact_info">
                     <div class="info_item">
                         <i class="lnr lnr-home"></i>
-                        <h6>California, United States</h6>
-                        <p>Santa monica bullevard</p>
+                        <h6>Marseille, France</h6>
+                        <p>Le panier</p>
                     </div>
                     <div class="info_item">
                         <i class="lnr lnr-phone-handset"></i>
@@ -25,7 +25,7 @@
                     </div>
                     <div class="info_item">
                         <i class="lnr lnr-envelope"></i>
-                        <h6><a href="#">support@colorlib.com</a></h6>
+                        <h6><a href="#">e.stofati.dev@gmail.com</a></h6>
                         <p>Send us your query anytime!</p>
                     </div>
                 </div>
